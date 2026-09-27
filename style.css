@@ -1,0 +1,2073 @@
+/* ============================================================
+   GGTIERS
+   Main stylesheet
+============================================================ */
+
+
+/* ============================================================
+   RESET
+============================================================ */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    min-height: 100%;
+    background: #0b0b0d;
+}
+
+body {
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at top,
+            rgba(255, 255, 255, 0.035),
+            transparent 35%
+        ),
+        #0b0b0d;
+
+    color: #eeeeee;
+
+    font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+}
+
+button,
+input,
+select {
+    font: inherit;
+}
+
+button {
+    user-select: none;
+}
+
+img {
+    display: block;
+}
+
+
+/* ============================================================
+   SCROLLBAR
+============================================================ */
+
+::-webkit-scrollbar {
+    width: 9px;
+    height: 9px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0a0a0c;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #303036;
+    border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #414148;
+}
+
+
+/* ============================================================
+   UTILITY BAR
+============================================================ */
+
+.utility-bar {
+    min-height: 52px;
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: 1fr minmax(280px, 600px) 1fr;
+
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 8px 24px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #17171b 0%,
+            #111114 100%
+        );
+
+    border-bottom: 1px solid #29292f;
+
+    box-shadow:
+        0 2px 12px rgba(0, 0, 0, 0.35);
+
+    position: sticky;
+    top: 0;
+
+    z-index: 100;
+}
+
+.utility-left {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.utility-center {
+    display: flex;
+    justify-content: center;
+}
+
+.utility-right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 8px;
+}
+
+
+/* ============================================================
+   UTILITY BUTTONS
+============================================================ */
+
+.utility-button,
+.search-button,
+.copy-ip-button {
+    border: 1px solid #38383f;
+
+    background: #202025;
+    color: #eeeeee;
+
+    border-radius: 6px;
+
+    min-height: 34px;
+
+    padding: 0 14px;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background 0.15s ease,
+        border-color 0.15s ease,
+        transform 0.15s ease;
+}
+
+.utility-button:hover,
+.search-button:hover,
+.copy-ip-button:hover {
+    background: #292930;
+    border-color: #505058;
+}
+
+.utility-button:active,
+.search-button:active,
+.copy-ip-button:active {
+    transform: translateY(1px);
+}
+
+.utility-button:focus-visible,
+.search-button:focus-visible,
+.copy-ip-button:focus-visible {
+    outline: 2px solid #77777f;
+    outline-offset: 2px;
+}
+
+
+/* ============================================================
+   SEARCH
+============================================================ */
+
+.search-container {
+    width: 100%;
+
+    display: flex;
+
+    gap: 6px;
+}
+
+.search-input {
+    width: 100%;
+    min-height: 34px;
+
+    border: 1px solid #38383f;
+    border-radius: 6px;
+
+    background: #0c0c0f;
+    color: #ffffff;
+
+    padding: 0 12px;
+
+    outline: none;
+
+    font-size: 13px;
+
+    transition:
+        border-color 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+.search-input::placeholder {
+    color: #77777f;
+}
+
+.search-input:focus {
+    border-color: #62626b;
+
+    box-shadow:
+        0 0 0 2px rgba(255, 255, 255, 0.035);
+}
+
+.search-button {
+    flex: 0 0 auto;
+}
+
+
+/* ============================================================
+   SERVER IP
+============================================================ */
+
+.server-ip-container {
+    display: flex;
+    gap: 6px;
+}
+
+.server-ip-input {
+    width: 165px;
+    min-height: 34px;
+
+    border: 1px solid #38383f;
+    border-radius: 6px;
+
+    background: #0c0c0f;
+    color: #cfcfd5;
+
+    padding: 0 10px;
+
+    outline: none;
+
+    font-family:
+        "SFMono-Regular",
+        Consolas,
+        "Liberation Mono",
+        monospace;
+
+    font-size: 12px;
+}
+
+.copy-ip-button {
+    flex: 0 0 auto;
+}
+
+.copy-ip-status {
+    width: 48px;
+
+    color: #55ff55;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    text-align: left;
+}
+
+
+/* ============================================================
+   MAIN NAV
+============================================================ */
+
+.main-nav {
+    min-height: 74px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 12px 28px;
+
+    background: #111114;
+
+    border-bottom: 1px solid #25252b;
+
+    position: relative;
+
+    z-index: 50;
+}
+
+.nav-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.brand-title {
+    font-size: 25px;
+    line-height: 1;
+
+    font-weight: 900;
+
+    letter-spacing: -0.8px;
+}
+
+.brand-subtitle {
+    color: #77777f;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+}
+
+
+/* ============================================================
+   ACCOUNT AREA
+============================================================ */
+
+.account-area {
+    display: flex;
+    align-items: center;
+}
+
+.logged-out-controls,
+.logged-in-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.account-information {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    margin-right: 5px;
+}
+
+.current-username {
+    color: #dddddf;
+
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.role-badge {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 21px;
+
+    padding: 0 7px;
+
+    border-radius: 4px;
+
+    font-size: 9px;
+    font-weight: 900;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.6px;
+}
+
+.role-badge.admin {
+    background: rgba(255, 85, 85, 0.13);
+
+    border: 1px solid rgba(255, 85, 85, 0.3);
+
+    color: #ff5555;
+}
+
+.role-badge.viewer {
+    background: rgba(183, 183, 183, 0.1);
+
+    border: 1px solid rgba(183, 183, 183, 0.2);
+
+    color: #b7b7b7;
+}
+
+
+/* ============================================================
+   NAV ACCOUNT BUTTONS
+============================================================ */
+
+.nav-account-button {
+    min-height: 34px;
+
+    border: 1px solid #38383f;
+
+    border-radius: 6px;
+
+    background: #1d1d22;
+    color: #dddddf;
+
+    padding: 0 13px;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition:
+        background 0.15s ease,
+        border-color 0.15s ease,
+        color 0.15s ease;
+}
+
+.nav-account-button:hover {
+    background: #292930;
+    border-color: #505058;
+}
+
+.nav-account-button:focus-visible {
+    outline: 2px solid #77777f;
+    outline-offset: 2px;
+}
+
+.nav-account-button.primary {
+    background: #eeeeee;
+
+    border-color: #eeeeee;
+
+    color: #111114;
+}
+
+.nav-account-button.primary:hover {
+    background: #ffffff;
+}
+
+.nav-account-button.admin-button {
+    color: #ff7777;
+
+    border-color: rgba(255, 85, 85, 0.35);
+
+    background: rgba(255, 85, 85, 0.07);
+}
+
+.nav-account-button.admin-button:hover {
+    background: rgba(255, 85, 85, 0.13);
+
+    border-color: rgba(255, 85, 85, 0.55);
+}
+
+.nav-account-button.logout-button {
+    color: #aaaaaf;
+}
+
+
+/* ============================================================
+   MAIN APP
+============================================================ */
+
+#app {
+    width: 100%;
+
+    max-width: 1450px;
+
+    margin: 0 auto;
+
+    padding: 24px 28px 50px;
+}
+
+
+/* ============================================================
+   GAME MODE NAVIGATION
+============================================================ */
+
+.gamemode-navigation {
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    width: 100%;
+
+    padding: 7px;
+
+    background: #121216;
+
+    border: 1px solid #25252b;
+
+    border-radius: 8px;
+
+    overflow-x: auto;
+
+    scrollbar-width: thin;
+}
+
+.gamemode-tab {
+    min-height: 43px;
+    min-width: 82px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    padding: 0 12px;
+
+    border: 1px solid transparent;
+
+    border-radius: 6px;
+
+    background: transparent;
+
+    color: #898991;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    white-space: nowrap;
+
+    cursor: pointer;
+
+    transition:
+        background 0.15s ease,
+        border-color 0.15s ease,
+        color 0.15s ease;
+}
+
+.gamemode-tab:hover {
+    background: #1c1c21;
+
+    color: #dddddf;
+}
+
+.gamemode-tab.active {
+    background: #24242a;
+
+    border-color: #38383f;
+
+    color: #ffffff;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.gamemode-tab:focus-visible {
+    outline: 2px solid #77777f;
+    outline-offset: 2px;
+}
+
+.gamemode-tab img {
+    width: 25px;
+    height: 25px;
+
+    object-fit: contain;
+
+    image-rendering: pixelated;
+
+    flex: 0 0 auto;
+}
+
+
+/* ============================================================
+   FIVE SMALLER ICONS
+============================================================ */
+
+.gamemode-tab[data-gamemode="Sword"] img,
+.gamemode-tab[data-gamemode="Axe"] img,
+.gamemode-tab[data-gamemode="Mace"] img,
+.gamemode-tab[data-gamemode="Vanilla"] img,
+.gamemode-tab[data-gamemode="Netherite Pot"] img {
+    width: 22.5px;
+    height: 22.5px;
+}
+
+
+/* ============================================================
+   LEADERBOARD SECTION
+============================================================ */
+
+.leaderboard-section {
+    margin-top: 24px;
+}
+
+.leaderboard-header {
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    margin-bottom: 13px;
+}
+
+.leaderboard-header h1 {
+    font-size: 22px;
+
+    font-weight: 900;
+
+    letter-spacing: -0.4px;
+}
+
+.leaderboard-header p {
+    margin-top: 3px;
+
+    color: #717178;
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.leaderboard-count {
+    color: #66666e;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+
+/* ============================================================
+   LEADERBOARD
+============================================================ */
+
+.leaderboard {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+
+/* ============================================================
+   PLAYER ROW
+============================================================ */
+
+.player-row {
+    width: 100%;
+
+    min-height: 72px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 9px 13px;
+
+    border: 1px solid #27272d;
+
+    border-radius: 7px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #16161a 0%,
+            #121216 100%
+        );
+
+    box-shadow:
+        0 2px 5px rgba(0, 0, 0, 0.15);
+
+    transition:
+        border-color 0.15s ease,
+        transform 0.15s ease;
+}
+
+.player-row:hover {
+    border-color: #36363e;
+}
+
+
+/* ============================================================
+   PLACEMENT COLORS
+============================================================ */
+
+.player-row.placement-first {
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255, 215, 0, 0.24),
+            rgba(255, 196, 0, 0.08)
+        ),
+        #16161a;
+
+    border-color: rgba(255, 215, 0, 0.34);
+}
+
+.player-row.placement-second {
+    background:
+        linear-gradient(
+            90deg,
+            rgba(210, 210, 220, 0.2),
+            rgba(170, 170, 185, 0.07)
+        ),
+        #16161a;
+
+    border-color: rgba(210, 210, 220, 0.3);
+}
+
+.player-row.placement-third {
+    background:
+        linear-gradient(
+            90deg,
+            rgba(205, 127, 50, 0.2),
+            rgba(170, 90, 30, 0.07)
+        ),
+        #16161a;
+
+    border-color: rgba(205, 127, 50, 0.3);
+}
+
+
+/* ============================================================
+   PLAYER INFORMATION
+============================================================ */
+
+.player-information {
+    min-width: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+.player-placement {
+    width: 27px;
+
+    color: #5d5d64;
+
+    font-size: 11px;
+
+    font-weight: 900;
+
+    text-align: center;
+
+    flex: 0 0 27px;
+}
+
+.placement-first .player-placement {
+    color: #ffd700;
+}
+
+.placement-second .player-placement {
+    color: #d8d8df;
+}
+
+.placement-third .player-placement {
+    color: #cd7f32;
+}
+
+.player-avatar {
+    width: 44px;
+    height: 44px;
+
+    flex: 0 0 44px;
+
+    border-radius: 5px;
+
+    background: #202026;
+
+    border: 1px solid #36363d;
+
+    image-rendering: pixelated;
+
+    object-fit: cover;
+}
+
+.player-name-container {
+    min-width: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+}
+
+.player-name {
+    max-width: 220px;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+
+    color: #f1f1f3;
+
+    font-size: 14px;
+
+    font-weight: 900;
+}
+
+.player-points {
+    color: #686870;
+
+    font-size: 10px;
+
+    font-weight: 800;
+}
+
+
+/* ============================================================
+   PLAYER STATS
+============================================================ */
+
+.player-stats {
+    margin-left: auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+    gap: 6px;
+
+    flex: 0 0 auto;
+}
+
+
+/* ============================================================
+   OVERALL GAME MODE STAT
+============================================================ */
+
+.gamemode-stat {
+    width: 52px;
+    height: 52px;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 6px;
+
+    background: #101014;
+
+    border: 1px solid #292930;
+
+    overflow: hidden;
+
+    cursor: default;
+
+    transition:
+        border-color 0.15s ease,
+        transform 0.15s ease;
+}
+
+.gamemode-stat.editable {
+    cursor: pointer;
+}
+
+.gamemode-stat.editable:hover {
+    border-color: #505058;
+
+    transform: translateY(-1px);
+}
+
+.gamemode-stat.editable:active {
+    transform: translateY(0);
+}
+
+.gamemode-stat img {
+    width: 33px;
+    height: 33px;
+
+    object-fit: contain;
+
+    image-rendering: pixelated;
+
+    opacity: 0.8;
+}
+
+
+/* ============================================================
+   STAT ICON SIZE ADJUSTMENTS
+============================================================ */
+
+.gamemode-stat[data-gamemode="Sword"] img,
+.gamemode-stat[data-gamemode="Axe"] img,
+.gamemode-stat[data-gamemode="Mace"] img,
+.gamemode-stat[data-gamemode="Vanilla"] img,
+.gamemode-stat[data-gamemode="Netherite Pot"] img {
+    width: 30px;
+    height: 30px;
+}
+
+
+/* ============================================================
+   TIER TEXT
+============================================================ */
+
+.tier-text {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    background: rgba(0, 0, 0, 0.78);
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+
+    border-radius: 4px;
+
+    padding: 3px 4px;
+
+    min-width: 32px;
+
+    text-align: center;
+
+    font-size: 11px;
+
+    font-weight: 900;
+
+    text-shadow:
+        0 1px 2px #000;
+
+    box-shadow:
+        0 1px 4px rgba(0, 0, 0, 0.65);
+
+    line-height: 1;
+
+    z-index: 2;
+
+    pointer-events: none;
+}
+
+
+/* ============================================================
+   TIER COLORS
+============================================================ */
+
+.tier-lt5,
+.tier-mt5,
+.tier-ht5 {
+    color: #b7b7b7;
+}
+
+.tier-lt4,
+.tier-mt4,
+.tier-ht4 {
+    color: #55aaff;
+}
+
+.tier-lt3,
+.tier-mt3,
+.tier-ht3 {
+    color: #55ff55;
+}
+
+.tier-lt2,
+.tier-mt2,
+.tier-ht2 {
+    color: #ffff55;
+}
+
+.tier-lt1,
+.tier-mt1,
+.tier-ht1 {
+    color: #ff5555;
+}
+
+
+/* ============================================================
+   INDIVIDUAL GAME MODE STAT
+============================================================ */
+
+.single-mode-stat {
+    min-width: 110px;
+    height: 52px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 0 15px;
+
+    border-radius: 6px;
+
+    background: #101014;
+
+    border: 1px solid #292930;
+
+    cursor: default;
+
+    font-size: 16px;
+
+    font-weight: 900;
+
+    transition:
+        border-color 0.15s ease,
+        transform 0.15s ease;
+}
+
+.single-mode-stat.editable {
+    cursor: pointer;
+}
+
+.single-mode-stat.editable:hover {
+    border-color: #505058;
+
+    transform: translateY(-1px);
+}
+
+.single-mode-stat.editable:active {
+    transform: translateY(0);
+}
+
+
+/* ============================================================
+   EMPTY LEADERBOARD
+============================================================ */
+
+.empty-leaderboard {
+    min-height: 260px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 1px dashed #303037;
+
+    border-radius: 8px;
+
+    background: rgba(255, 255, 255, 0.012);
+
+    text-align: center;
+}
+
+.empty-icon {
+    margin-bottom: 12px;
+
+    color: #44444c;
+
+    font-size: 35px;
+}
+
+.empty-leaderboard h2 {
+    color: #bdbdc3;
+
+    font-size: 16px;
+
+    font-weight: 900;
+}
+
+.empty-leaderboard p {
+    margin-top: 5px;
+
+    color: #66666e;
+
+    font-size: 12px;
+}
+
+
+/* ============================================================
+   MODAL OVERLAY
+============================================================ */
+
+.modal-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(0, 0, 0, 0.74);
+
+    backdrop-filter: blur(5px);
+
+    z-index: 500;
+}
+
+
+/* ============================================================
+   MODAL
+============================================================ */
+
+.modal {
+    width: 100%;
+
+    max-height: calc(100vh - 40px);
+
+    overflow-y: auto;
+
+    position: relative;
+
+    border: 1px solid #35353d;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #1a1a1f 0%,
+            #111114 100%
+        );
+
+    box-shadow:
+        0 25px 80px rgba(0, 0, 0, 0.65);
+
+    padding: 26px;
+}
+
+.auth-modal {
+    max-width: 420px;
+}
+
+.admin-modal {
+    max-width: 590px;
+}
+
+.player-search-modal {
+    max-width: 700px;
+}
+
+
+/* ============================================================
+   MODAL CLOSE
+============================================================ */
+
+.modal-close {
+    position: absolute;
+
+    top: 13px;
+    right: 14px;
+
+    width: 30px;
+    height: 30px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid transparent;
+
+    border-radius: 5px;
+
+    background: transparent;
+
+    color: #77777f;
+
+    font-size: 23px;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+        background 0.15s ease,
+        color 0.15s ease;
+}
+
+.modal-close:hover {
+    background: #25252b;
+
+    color: #ffffff;
+}
+
+.modal-close:focus-visible {
+    outline: 2px solid #77777f;
+    outline-offset: 2px;
+}
+
+
+/* ============================================================
+   MODAL HEADER
+============================================================ */
+
+.modal-header {
+    text-align: center;
+
+    margin-bottom: 22px;
+}
+
+.modal-icon {
+    width: 46px;
+    height: 46px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto 12px;
+
+    border-radius: 8px;
+
+    background: #24242a;
+
+    border: 1px solid #38383f;
+
+    font-size: 21px;
+}
+
+.admin-modal-icon {
+    color: #ff7777;
+}
+
+.modal-header h2 {
+    color: #f2f2f4;
+
+    font-size: 21px;
+
+    font-weight: 900;
+}
+
+.modal-header p {
+    max-width: 440px;
+
+    margin: 5px auto 0;
+
+    color: #73737b;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+
+/* ============================================================
+   FORMS
+============================================================ */
+
+.form-group {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 6px;
+
+    margin-bottom: 14px;
+}
+
+.form-group label {
+    color: #a8a8af;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.5px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+
+    min-height: 40px;
+
+    border: 1px solid #35353d;
+
+    border-radius: 6px;
+
+    background: #0d0d10;
+
+    color: #eeeeef;
+
+    padding: 0 11px;
+
+    outline: none;
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+    transition:
+        border-color 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+.form-group select {
+    cursor: pointer;
+}
+
+.form-group input::placeholder {
+    color: #595960;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #61616a;
+
+    box-shadow:
+        0 0 0 2px rgba(255, 255, 255, 0.035);
+}
+
+.form-row {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 12px;
+}
+
+
+/* ============================================================
+   FORM BUTTON
+============================================================ */
+
+.form-submit {
+    width: 100%;
+
+    min-height: 41px;
+
+    margin-top: 4px;
+
+    border: 1px solid #eeeeee;
+
+    border-radius: 6px;
+
+    background: #eeeeee;
+
+    color: #111114;
+
+    font-size: 12px;
+
+    font-weight: 900;
+
+    cursor: pointer;
+
+    transition:
+        background 0.15s ease,
+        transform 0.15s ease,
+        opacity 0.15s ease;
+}
+
+.form-submit:hover {
+    background: #ffffff;
+}
+
+.form-submit:active {
+    transform: translateY(1px);
+}
+
+.form-submit:disabled {
+    opacity: 0.5;
+
+    cursor: wait;
+}
+
+.danger-submit {
+    background: #ff5555;
+
+    border-color: #ff5555;
+
+    color: #ffffff;
+}
+
+.danger-submit:hover {
+    background: #ff7070;
+}
+
+
+/* ============================================================
+   FORM ERROR
+============================================================ */
+
+.form-error {
+    margin-bottom: 12px;
+
+    padding: 9px 10px;
+
+    border: 1px solid rgba(255, 85, 85, 0.3);
+
+    border-radius: 5px;
+
+    background: rgba(255, 85, 85, 0.08);
+
+    color: #ff7777;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    line-height: 1.4;
+}
+
+
+/* ============================================================
+   AUTH SWITCH
+============================================================ */
+
+.auth-switch {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 5px;
+
+    margin-top: 18px;
+
+    color: #66666e;
+
+    font-size: 11px;
+}
+
+.text-button {
+    border: 0;
+
+    background: transparent;
+
+    color: #bbbbc2;
+
+    font: inherit;
+
+    font-weight: 800;
+
+    cursor: pointer;
+}
+
+.text-button:hover {
+    color: #ffffff;
+}
+
+.text-button:focus-visible {
+    outline: 2px solid #77777f;
+
+    outline-offset: 2px;
+
+    border-radius: 3px;
+}
+
+
+/* ============================================================
+   ADMIN TABS
+============================================================ */
+
+.admin-tabs {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 5px;
+
+    padding: 4px;
+
+    margin-bottom: 20px;
+
+    background: #0d0d10;
+
+    border: 1px solid #28282f;
+
+    border-radius: 7px;
+}
+
+.admin-tab {
+    min-height: 34px;
+
+    border: 1px solid transparent;
+
+    border-radius: 5px;
+
+    background: transparent;
+
+    color: #77777f;
+
+    font-size: 11px;
+
+    font-weight: 900;
+
+    cursor: pointer;
+
+    transition:
+        background 0.15s ease,
+        color 0.15s ease,
+        border-color 0.15s ease;
+}
+
+.admin-tab:hover {
+    color: #dddddf;
+}
+
+.admin-tab.active {
+    background: #24242a;
+
+    border-color: #3a3a42;
+
+    color: #ffffff;
+}
+
+.admin-tab:focus-visible {
+    outline: 2px solid #77777f;
+
+    outline-offset: 2px;
+}
+
+
+/* ============================================================
+   ADMIN PANELS
+============================================================ */
+
+.admin-action-panel {
+    animation: panelFade 0.15s ease;
+}
+
+.admin-panel-description {
+    margin-bottom: 17px;
+}
+
+.admin-panel-description h3 {
+    color: #e8e8eb;
+
+    font-size: 15px;
+
+    font-weight: 900;
+}
+
+.admin-panel-description p {
+    margin-top: 4px;
+
+    color: #6f6f77;
+
+    font-size: 11px;
+
+    line-height: 1.5;
+}
+
+
+/* ============================================================
+   PLAYER SEARCH MODAL
+============================================================ */
+
+.player-search-content {
+    padding-top: 5px;
+}
+
+.search-player-header {
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    padding-bottom: 18px;
+
+    margin-bottom: 18px;
+
+    border-bottom: 1px solid #292930;
+}
+
+.search-player-avatar {
+    width: 54px;
+    height: 54px;
+
+    flex: 0 0 54px;
+
+    border-radius: 6px;
+
+    border: 1px solid #38383f;
+
+    background: #202026;
+
+    image-rendering: pixelated;
+
+    object-fit: cover;
+}
+
+.search-player-name {
+    color: #eeeeef;
+
+    font-size: 20px;
+
+    font-weight: 900;
+}
+
+.search-player-overall {
+    margin-top: 3px;
+
+    color: #77777f;
+
+    font-size: 11px;
+
+    font-weight: 700;
+}
+
+.search-stats-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 7px;
+}
+
+.search-stat-card {
+    min-height: 65px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 9px;
+
+    border: 1px solid #292930;
+
+    border-radius: 6px;
+
+    background: #121216;
+}
+
+.search-stat-card img {
+    width: 38px;
+    height: 38px;
+
+    flex: 0 0 38px;
+
+    object-fit: contain;
+
+    image-rendering: pixelated;
+}
+
+.search-stat-card-info {
+    min-width: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 3px;
+}
+
+.search-stat-card-name {
+    color: #77777f;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.5px;
+}
+
+.search-stat-card-tier {
+    font-size: 14px;
+
+    font-weight: 900;
+}
+
+.search-stat-card-points {
+    color: #595960;
+
+    font-size: 9px;
+
+    font-weight: 700;
+}
+
+
+/* ============================================================
+   SEARCH NO RESULT
+============================================================ */
+
+.search-no-result {
+    min-height: 190px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+}
+
+.search-no-result-icon {
+    margin-bottom: 10px;
+
+    color: #46464e;
+
+    font-size: 32px;
+}
+
+.search-no-result h3 {
+    color: #cfcfd4;
+
+    font-size: 15px;
+
+    font-weight: 900;
+}
+
+.search-no-result p {
+    margin-top: 5px;
+
+    color: #696970;
+
+    font-size: 11px;
+}
+
+
+/* ============================================================
+   UTILITIES
+============================================================ */
+
+.hidden {
+    display: none !important;
+}
+
+
+/* ============================================================
+   ANIMATIONS
+============================================================ */
+
+@keyframes panelFade {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(3px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+
+}
+
+
+/* ============================================================
+   RESPONSIVE — 1150PX
+============================================================ */
+
+@media (max-width: 1150px) {
+
+    .utility-bar {
+        grid-template-columns:
+            auto
+            1fr
+            auto;
+    }
+
+    .gamemode-tab {
+        min-width: 75px;
+    }
+
+    .player-stats {
+        gap: 4px;
+    }
+
+    .gamemode-stat {
+        width: 47px;
+        height: 47px;
+    }
+
+    .gamemode-stat img {
+        width: 29px;
+        height: 29px;
+    }
+
+    .gamemode-stat[data-gamemode="Sword"] img,
+    .gamemode-stat[data-gamemode="Axe"] img,
+    .gamemode-stat[data-gamemode="Mace"] img,
+    .gamemode-stat[data-gamemode="Vanilla"] img,
+    .gamemode-stat[data-gamemode="Netherite Pot"] img {
+        width: 26px;
+        height: 26px;
+    }
+
+    .tier-text {
+        min-width: 29px;
+
+        padding: 3px;
+
+        font-size: 10px;
+    }
+
+}
+
+
+/* ============================================================
+   RESPONSIVE — 900PX
+============================================================ */
+
+@media (max-width: 900px) {
+
+    .utility-bar {
+        grid-template-columns: 1fr;
+
+        gap: 8px;
+
+        padding: 10px 16px;
+    }
+
+    .utility-left,
+    .utility-center,
+    .utility-right {
+        justify-content: center;
+    }
+
+    .utility-right {
+        display: flex;
+    }
+
+    .main-nav {
+        padding: 12px 16px;
+    }
+
+    #app {
+        padding: 18px 16px 40px;
+    }
+
+    .player-row {
+        align-items: flex-start;
+    }
+
+    .player-stats {
+        max-width: 70%;
+
+        overflow-x: auto;
+
+        padding-bottom: 2px;
+    }
+
+    .player-name {
+        max-width: 150px;
+    }
+
+}
+
+
+/* ============================================================
+   RESPONSIVE — 700PX
+============================================================ */
+
+@media (max-width: 700px) {
+
+    .main-nav {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 12px;
+    }
+
+    .account-area {
+        width: 100%;
+    }
+
+    .logged-out-controls,
+    .logged-in-controls {
+        width: 100%;
+    }
+
+    .logged-out-controls .nav-account-button,
+    .logged-in-controls .nav-account-button {
+        flex: 1;
+    }
+
+    .account-information {
+        margin-right: auto;
+    }
+
+    .gamemode-navigation {
+        border-radius: 6px;
+    }
+
+    .leaderboard-header {
+        align-items: flex-start;
+
+        gap: 8px;
+
+        flex-direction: column;
+    }
+
+    .player-row {
+        padding: 9px;
+    }
+
+    .player-information {
+        gap: 8px;
+    }
+
+    .player-placement {
+        width: 20px;
+
+        flex-basis: 20px;
+    }
+
+    .player-avatar {
+        width: 38px;
+        height: 38px;
+
+        flex-basis: 38px;
+    }
+
+    .player-name {
+        max-width: 120px;
+
+        font-size: 12px;
+    }
+
+    .player-points {
+        font-size: 9px;
+    }
+
+    .player-stats {
+        max-width: 62%;
+    }
+
+    .gamemode-stat {
+        width: 43px;
+        height: 43px;
+    }
+
+    .gamemode-stat img {
+        width: 27px;
+        height: 27px;
+    }
+
+    .gamemode-stat[data-gamemode="Sword"] img,
+    .gamemode-stat[data-gamemode="Axe"] img,
+    .gamemode-stat[data-gamemode="Mace"] img,
+    .gamemode-stat[data-gamemode="Vanilla"] img,
+    .gamemode-stat[data-gamemode="Netherite Pot"] img {
+        width: 24px;
+        height: 24px;
+    }
+
+    .tier-text {
+        min-width: 27px;
+
+        padding: 3px 2px;
+
+        font-size: 9px;
+    }
+
+    .single-mode-stat {
+        min-width: 85px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+
+        gap: 0;
+    }
+
+    .search-stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* ============================================================
+   RESPONSIVE — 480PX
+============================================================ */
+
+@media (max-width: 480px) {
+
+    .brand-title {
+        font-size: 21px;
+    }
+
+    .brand-subtitle {
+        font-size: 9px;
+    }
+
+    .server-ip-input {
+        width: 145px;
+    }
+
+    .utility-bar {
+        padding: 9px 10px;
+    }
+
+    #app {
+        padding: 14px 10px 30px;
+    }
+
+    .player-row {
+        min-height: 64px;
+    }
+
+    .player-stats {
+        max-width: 57%;
+    }
+
+    .gamemode-stat {
+        width: 39px;
+        height: 39px;
+    }
+
+    .gamemode-stat img {
+        width: 24px;
+        height: 24px;
+    }
+
+    .gamemode-stat[data-gamemode="Sword"] img,
+    .gamemode-stat[data-gamemode="Axe"] img,
+    .gamemode-stat[data-gamemode="Mace"] img,
+    .gamemode-stat[data-gamemode="Vanilla"] img,
+    .gamemode-tab[data-gamemode="Netherite Pot"] img {
+        width: 21px;
+        height: 21px;
+    }
+
+    .tier-text {
+        min-width: 25px;
+
+        font-size: 8px;
+    }
+
+    .modal {
+        padding: 20px 16px;
+    }
+
+    .search-player-name {
+        font-size: 17px;
+    }
+
+}
+
+
+/* ============================================================
+   REDUCED MOTION
+============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+
+        transition-duration: 0.01ms !important;
+
+        animation-duration: 0.01ms !important;
+
+        animation-iteration-count: 1 !important;
+    }
+
+}
