@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GGTiers</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================================================
+         TOP UTILITY BAR
+    ========================================================== -->
+
+    <header class="utility-bar">
+
+        <div class="utility-left">
+            <button
+                type="button"
+                class="utility-button discord-button"
+                id="discordButton"
+            >
+                Discord
+            </button>
+        </div>
+
+        <div class="utility-center">
+
+            <div class="search-container">
+
+                <input
+                    type="text"
+                    id="playerSearchInput"
+                    class="search-input"
+                    placeholder="Search player..."
+                    autocomplete="off"
+                >
+
+                <button
+                    type="button"
+                    id="playerSearchButton"
+                    class="search-button"
+                >
+                    Search
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="utility-right">
+
+            <div class="server-ip-container">
+
+                <input
+                    type="text"
+                    id="serverIp"
+                    class="server-ip-input"
+                    value="play.vantamc.com"
+                    readonly
+                    aria-label="Minecraft server IP"
+                >
+
+                <button
+                    type="button"
+                    id="copyIpButton"
+                    class="copy-ip-button"
+                >
+                    Copy
+                </button>
+
+            </div>
+
+            <span
+                id="copyIpStatus"
+                class="copy-ip-status"
+                aria-live="polite"
+            ></span>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================================================
+         MAIN NAVIGATION
+    ========================================================== -->
+
+    <nav class="main-nav">
+
+        <div class="nav-brand">
+
+            <div class="brand-title">
+                GGTiers
+            </div>
+
+            <div class="brand-subtitle">
+                Minecraft PvP Rankings
+            </div>
+
+        </div>
+
+
+        <div class="account-area">
+
+            <!-- LOGGED OUT -->
+
+            <div
+                id="loggedOutControls"
+                class="logged-out-controls"
+            >
+
+                <button
+                    type="button"
+                    id="loginButton"
+                    class="nav-account-button"
+                >
+                    Login
+                </button>
+
+                <button
+                    type="button"
+                    id="signupButton"
+                    class="nav-account-button primary"
+                >
+                    Sign Up
+                </button>
+
+            </div>
+
+
+            <!-- LOGGED IN -->
+
+            <div
+                id="loggedInControls"
+                class="logged-in-controls hidden"
+            >
+
+                <div class="account-information">
+
+                    <span
+                        id="currentUsername"
+                        class="current-username"
+                    ></span>
+
+                    <span
+                        id="currentRole"
+                        class="role-badge"
+                    ></span>
+
+                </div>
+
+                <button
+                    type="button"
+                    id="adminButton"
+                    class="nav-account-button admin-button hidden"
+                >
+                    Admin
+                </button>
+
+                <button
+                    type="button"
+                    id="logoutButton"
+                    class="nav-account-button logout-button"
+                >
+                    Logout
+                </button>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =========================================================
+         MAIN APPLICATION
+    ========================================================== -->
+
+    <main id="app">
+
+
+        <!-- =====================================================
+             GAME MODE NAVIGATION
+        ====================================================== -->
+
+        <section
+            class="gamemode-navigation"
+            aria-label="Gamemode navigation"
+        >
+
+            <button
+                type="button"
+                class="gamemode-tab active"
+                data-gamemode="Overall"
+            >
+                <span class="gamemode-tab-text">
+                    Overall
+                </span>
+            </button>
+
+
+            <button
+                type="button"
+                class="gamemode-tab"
+                data-gamemode="Sword"
+            >
+                <img
+                    src="gamemodes/Sword.png"
+                    alt=""
+                    draggable="false"
+                >
+
+                <span class="gamemode-tab-text">
+                    Sword
+                </span>
+            </button>
+
+
+            <button
+                type="button"
+                class="gamemode-tab"
+                data-gamemode="Axe"
+            >
+                <img
+                    src="gamemodes/Axe.png"
+                    alt=""
+                    draggable="false"
+                >
+
+                <span class="gamemode-tab-text">
+                    Axe
+                </span>
+            </button>
+
+
+            <button
+                type="button"
+                class="gamemode-tab"
+                data-gamemode="Mace"
+            >
+                <img
+                    src="gamemodes/Mace.png"
+                    alt=""
+                    draggable="false"
+                >
+
+                <span class="gamemode-tab-text">
+                    Mace
+                </span>
+            </button>
+
+
+            <button
+                type="button"
+                class="gamemode-tab"
+                data-gamemode="Vanilla"
+            >
+                <img
+                    src="gamemodes/Vanilla.png"
+                    alt=""
+                    draggable="false"
+                >
+
+                <span class="gamemode-tab-text">
+                    Vanilla
+                </span>
+            </button>
+
+
+            <button
+                type="button"
+                class="gamemode-tab"
+                data-gamemode="UHC"
+            >
+                <img
+                    src="gamemodes/UHC.png"
+                    alt=""
+                    draggable="false"
+                >
+
+                <span class="gamemode-tab-text">
+                    UHC
+                </span>
+            </button>
+
+
+            <button
+                type="button"
+                class="gamemode-tab"
+                data-gamemode="D-SMP"
+            >
+                <img
+                    src="gamemodes/D-SMP.png"
+                    alt=""
+                    draggable="false"
+                >
+
+                <span class="gamemode-tab-text">
+                    D-SMP
+                </span>
+            </button>
+
+
+            <button
+                type="button"
+                class="gamemode-tab"
+                data-gamemode="SMP"
+            >
+                <img
+                    src="gamemodes/SMP.png"
+                    alt=""
+                    draggable="false"
+                >
+
+                <span class="gamemode-tab-text">
+                    SMP
+                </span>
+            </button>
+
+
+            <button
+                type="button"
+                class="gamemode-tab"
+                data-gamemode="Pot"
+            >
+                <img
+                    src="gamemodes/Pot.png"
+                    alt=""
+                    draggable="false"
+                >
+
+                <span class="gamemode-tab-text">
+                    Pot
+                </span>
+            </button>
+
+
+            <button
+                type="button"
+                class="gamemode-tab"
+                data-gamemode="Netherite Pot"
+            >
+                <img
+                    src="gamemodes/Netherite Pot.png"
+                    alt=""
+                    draggable="false"
+                >
+
+                <span class="gamemode-tab-text">
+                    Netherite Pot
+                </span>
+            </button>
+
+
+            <button
+                type="button"
+                class="gamemode-tab"
+                data-gamemode="Spear Mace"
+            >
+                <img
+                    src="gamemodes/Spear Mace.png"
+                    alt=""
+                    draggable="false"
+                >
+
+                <span class="gamemode-tab-text">
+                    Spear Mace
+                </span>
+            </button>
+
+        </section>
+
+
+        <!-- =====================================================
+             LEADERBOARD
+        ====================================================== -->
+
+        <section class="leaderboard-section">
+
+            <div class="leaderboard-header">
+
+                <div>
+
+                    <h1 id="leaderboardTitle">
+                        Overall
+                    </h1>
+
+                    <p id="leaderboardDescription">
+                        Overall Minecraft PvP rankings
+                    </p>
+
+                </div>
+
+                <div
+                    id="leaderboardCount"
+                    class="leaderboard-count"
+                >
+                    0 Players
+                </div>
+
+            </div>
+
+
+            <div
+                id="leaderboard"
+                class="leaderboard"
+            >
+                <!-- Player rows generated by JavaScript -->
+            </div>
+
+
+            <div
+                id="emptyLeaderboard"
+                class="empty-leaderboard hidden"
+            >
+
+                <div class="empty-icon">
+                    ⚔
+                </div>
+
+                <h2>
+                    No Players Yet
+                </h2>
+
+                <p>
+                    Players added to GGTiers will appear here.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================================================
+         AUTH MODAL
+    ========================================================== -->
+
+    <div
+        id="authOverlay"
+        class="modal-overlay hidden"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="authTitle"
+    >
+
+        <div class="modal auth-modal">
+
+            <button
+                type="button"
+                class="modal-close"
+                id="authCloseButton"
+                aria-label="Close authentication window"
+            >
+                ×
+            </button>
+
+
+            <div class="modal-header">
+
+                <div class="modal-icon">
+                    ⛏
+                </div>
+
+                <h2 id="authTitle">
+                    Login
+                </h2>
+
+                <p id="authDescription">
+                    Log in to your GGTiers account.
+                </p>
+
+            </div>
+
+
+            <form id="authForm">
+
+                <div class="form-group">
+
+                    <label for="authUsername">
+                        Username
+                    </label>
+
+                    <input
+                        type="text"
+                        id="authUsername"
+                        name="username"
+                        placeholder="Minecraft username"
+                        autocomplete="username"
+                        maxlength="16"
+                        minlength="3"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="authPassword">
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="authPassword"
+                        name="password"
+                        placeholder="Password"
+                        autocomplete="current-password"
+                        minlength="4"
+                        required
+                    >
+
+                </div>
+
+
+                <div
+                    id="authError"
+                    class="form-error hidden"
+                    role="alert"
+                ></div>
+
+
+                <button
+                    type="submit"
+                    id="authSubmitButton"
+                    class="form-submit"
+                >
+                    Login
+                </button>
+
+            </form>
+
+
+            <div class="auth-switch">
+
+                <span id="authSwitchText">
+                    Don't have an account?
+                </span>
+
+                <button
+                    type="button"
+                    id="authSwitchButton"
+                    class="text-button"
+                >
+                    Sign Up
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================================
+         ADMIN MODAL
+    ========================================================== -->
+
+    <div
+        id="adminOverlay"
+        class="modal-overlay hidden"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="adminModalTitle"
+    >
+
+        <div class="modal admin-modal">
+
+            <button
+                type="button"
+                class="modal-close"
+                id="adminCloseButton"
+                aria-label="Close admin panel"
+            >
+                ×
+            </button>
+
+
+            <div class="modal-header">
+
+                <div class="modal-icon admin-modal-icon">
+                    ⚙
+                </div>
+
+                <h2 id="adminModalTitle">
+                    Admin Panel
+                </h2>
+
+                <p>
+                    Manage the shared GGTiers leaderboard.
+                </p>
+
+            </div>
+
+
+            <!-- =================================================
+                 ADMIN ACTION TABS
+            ================================================== -->
+
+            <div class="admin-tabs">
+
+                <button
+                    type="button"
+                    class="admin-tab active"
+                    data-admin-action="add"
+                >
+                    Add
+                </button>
+
+                <button
+                    type="button"
+                    class="admin-tab"
+                    data-admin-action="update"
+                >
+                    Update
+                </button>
+
+                <button
+                    type="button"
+                    class="admin-tab"
+                    data-admin-action="remove"
+                >
+                    Remove
+                </button>
+
+            </div>
+
+
+            <!-- =================================================
+                 ADD PLAYER
+            ================================================== -->
+
+            <section
+                id="adminAddPanel"
+                class="admin-action-panel"
+            >
+
+                <div class="admin-panel-description">
+
+                    <h3>
+                        Add Player
+                    </h3>
+
+                    <p>
+                        Add a player to the shared leaderboard and set
+                        their tier for a specific gamemode.
+                    </p>
+
+                </div>
+
+
+                <form id="adminAddForm">
+
+                    <div class="form-group">
+
+                        <label for="adminAddUsername">
+                            Player Username
+                        </label>
+
+                        <input
+                            type="text"
+                            id="adminAddUsername"
+                            placeholder="Minecraft username"
+                            maxlength="16"
+                            minlength="3"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+
+                            <label for="adminAddGamemode">
+                                Gamemode
+                            </label>
+
+                            <select id="adminAddGamemode">
+                                <!-- Populated by admin.js -->
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="adminAddTier">
+                                Tier
+                            </label>
+
+                            <select id="adminAddTier">
+                                <!-- Populated by admin.js -->
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        id="adminAddError"
+                        class="form-error hidden"
+                        role="alert"
+                    ></div>
+
+
+                    <button
+                        type="submit"
+                        class="form-submit"
+                    >
+                        Add / Set Tier
+                    </button>
+
+                </form>
+
+            </section>
+
+
+            <!-- =================================================
+                 UPDATE PLAYER
+            ================================================== -->
+
+            <section
+                id="adminUpdatePanel"
+                class="admin-action-panel hidden"
+            >
+
+                <div class="admin-panel-description">
+
+                    <h3>
+                        Update Tier
+                    </h3>
+
+                    <p>
+                        Change an existing player's tier in a specific
+                        gamemode.
+                    </p>
+
+                </div>
+
+
+                <form id="adminUpdateForm">
+
+                    <div class="form-group">
+
+                        <label for="adminUpdatePlayer">
+                            Player
+                        </label>
+
+                        <select id="adminUpdatePlayer">
+                            <!-- Populated by admin.js -->
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+
+                            <label for="adminUpdateGamemode">
+                                Gamemode
+                            </label>
+
+                            <select id="adminUpdateGamemode">
+                                <!-- Populated by admin.js -->
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="adminUpdateTier">
+                                New Tier
+                            </label>
+
+                            <select id="adminUpdateTier">
+                                <!-- Populated by admin.js -->
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        id="adminUpdateError"
+                        class="form-error hidden"
+                        role="alert"
+                    ></div>
+
+
+                    <button
+                        type="submit"
+                        class="form-submit"
+                    >
+                        Update Tier
+                    </button>
+
+                </form>
+
+            </section>
+
+
+            <!-- =================================================
+                 REMOVE PLAYER
+            ================================================== -->
+
+            <section
+                id="adminRemovePanel"
+                class="admin-action-panel hidden"
+            >
+
+                <div class="admin-panel-description">
+
+                    <h3>
+                        Remove Player
+                    </h3>
+
+                    <p>
+                        Completely remove a player and all of their tiers
+                        from the shared leaderboard.
+                    </p>
+
+                </div>
+
+
+                <form id="adminRemoveForm">
+
+                    <div class="form-group">
+
+                        <label for="adminRemovePlayer">
+                            Player
+                        </label>
+
+                        <select id="adminRemovePlayer">
+                            <!-- Populated by admin.js -->
+                        </select>
+
+                    </div>
+
+
+                    <div
+                        id="adminRemoveError"
+                        class="form-error hidden"
+                        role="alert"
+                    ></div>
+
+
+                    <button
+                        type="submit"
+                        class="form-submit danger-submit"
+                    >
+                        Remove Player
+                    </button>
+
+                </form>
+
+            </section>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================================
+         PLAYER SEARCH MODAL
+    ========================================================== -->
+
+    <div
+        id="playerSearchOverlay"
+        class="modal-overlay hidden"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="playerSearchTitle"
+    >
+
+        <div class="modal player-search-modal">
+
+            <button
+                type="button"
+                class="modal-close"
+                id="playerSearchCloseButton"
+                aria-label="Close player search"
+            >
+                ×
+            </button>
+
+
+            <div
+                id="playerSearchContent"
+                class="player-search-content"
+            >
+                <!-- Generated by search.js -->
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================================
+         JAVASCRIPT
+         
+         IMPORTANT:
+         This MUST be loaded as a module because app.js imports
+         the other six JavaScript files.
+    ========================================================== -->
+
+        <script
+            type="module"
+            src="js/app.js"
+        ></script>
+
+</body>
+</html>
